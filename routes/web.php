@@ -17,22 +17,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('auth/login');
 });
+
 Route::get('/dashboard', [HotelController::class, 'afficherHotels'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
 
 Route::middleware('auth')->group(function () {
-    // Liste des hôtels (welcome)
     Route::get('/hotels', [HotelController::class, 'afficherHotels'])->name('afficherHotels');
 
-    // Créer un hôtel
     Route::post('/createhotel', [HotelController::class, 'createhotel'])->name('createhotel');
 
-    // Supprimer un hôtel
     Route::delete('/hotel/{id}', [HotelController::class, 'supprimerhotel'])->name('supprimerhotel');
 
-    // Modifier un hôtel
     Route::post('/updatehotel/{id}', [HotelController::class, 'updatehotel'])->name('updatehotel');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
