@@ -47,7 +47,12 @@ public function afficherHotels()
     $hotels = Hotel::all();
     return view('dashboard', compact('hotels'));
 }
-
+///////////////////////////////////////////////////////////////
+public function showHotelsForUser()
+{
+    $hotels = Hotel::all();
+    return view('userinterface', compact('hotels'));
+}
 ///////////////////////////////////////////////////////////////
 public function supprimerhotel($id)
 {
@@ -102,6 +107,4 @@ public function updatehotel(Request $request, $id)
 
     return redirect()->route('dashboard');
 }
-
-///////////////////////////////////////////////////////////////
 }

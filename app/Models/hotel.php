@@ -15,4 +15,10 @@ class hotel extends Model
         'email',
         'photos',
     ];
+
+    public function reservations()
+{
+    return $this->hasMany(Reservation::class, 'id_hotel');
+}
+
 }

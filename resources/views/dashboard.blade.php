@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Dashboard admin') }}
         </h2>
     </x-slot>
     <div class="py-12">
@@ -48,7 +48,7 @@
                     </form>
                 </div>
 
-                {{-- Liste des hôtels --}}
+                {{-- Liste des reservations --}}
                 <div class="w-full md:w-[48%] bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 p-6 rounded-xl shadow-md">
                     <h2 class="text-xl font-semibold mb-4">Liste des hôtels</h2>
 

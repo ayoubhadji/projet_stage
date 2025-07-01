@@ -12,15 +12,22 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    @if (Auth::check() && Auth::user()->role === 'admin')
+                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                            {{ __('Dashboard admin') }}
+                        </x-nav-link>
+
+                        <x-nav-link :href="route('welcome.page')" :active="request()->routeIs('welcome.page')">
+                        {{ __('Liste des réservations') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('blablabla') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('blablabla') }}
-                    </x-nav-link>
+                    @endif
+                    @if (Auth::check() && Auth::user()->role === 'user')
+                        <x-nav-link :href="route('userinterface.page')" :active="request()->routeIs('userinterface.page')">
+                            {{ __('user interface') }}
+                        </x-nav-link>
+                    @endif
+
+
                 </div>
             </div>
 
@@ -29,7 +36,7 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
+                            <div>Bienvenue {{ Auth::user()->name }} !</div>
 
                             <div class="ms-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
